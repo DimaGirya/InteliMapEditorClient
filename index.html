@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editor">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="editorController">
+<main>
+    <div>
+        <div class="form-group">
+            <input type="number" class="form-control"  placeholder="From"  ng-model="width" id="width">
+            <input type="number" class="form-control"  placeholder="From"  ng-model="height"  id="height">
+            <input type="text" class="form-control"  placeholder="From"  ng-model="roomName" id="name">
+            <select ng-model="selectedClassType" ng-options="x for x in roomType" ng-change="change()"></select>
+            <button ng-click = "createRoom()">Finish</button>
+        </div>
+    </div>
+    <table>
+        <tr ng-repeat="column in mapData" >
+            <th ng-repeat="box in column">
+                <div ng-class="['box']">
+                    <div ng-class = "['box_inner',box.border, box.status]" ng-click = "onBoxClicked($parent.$index,$index)">
+                        {{$parent.$index}}
+                        <br>
+                        {{$index}}
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </table>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src = "script.js"></script>
+</body>
+</html>
